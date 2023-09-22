@@ -2,7 +2,7 @@ import 'package:template/resources/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:worldtime/worldtime.dart';
 
-const String appName = 'Advokat BG';
+const String appName = 'Template';
 
 // Border Radius
 const double smallRadius = 8;
