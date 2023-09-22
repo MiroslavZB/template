@@ -33,7 +33,8 @@ This template features:
 ## Getting Started
 1. Create a new flutter app.
 2. Fetch the files from this template.
-3. Replace all instances of package imports from the template app with your app name.
-4. Setup a Firebase project. 
-5. Initialize Firebase.
-6. Search for `// TODO` and make changes where needed.
+3. Search for `// TODO` and make changes where needed.
+4. Replace all instances of package imports (`package:template`) from the template app with your 
+   app name.
+5. Setup a Firebase project. 
+6. Initialize Firebase.

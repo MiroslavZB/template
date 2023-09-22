@@ -1,4 +1,4 @@
-name: template
+name: template # // TODO change back to your original name
 description: A template for a new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
