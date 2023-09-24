@@ -62,12 +62,15 @@ List<String> multiLineFields = [];
 
 InputDecoration fieldDecoration({
   String? hint,
+  Widget? suffixIcon,
   EdgeInsets? contentPadding,
   required Color focusColor,
   required BorderRadius borderRadius,
 }) {
   return InputDecoration(
     hintText: hint,
+    counterText: '',
+    suffixIcon: suffixIcon,
     contentPadding: contentPadding,
     errorStyle: textSH4.copyWith(color: errorColor),
     enabledBorder: OutlineInputBorder(
