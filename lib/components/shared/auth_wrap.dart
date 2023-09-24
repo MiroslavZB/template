@@ -19,33 +19,33 @@ class AuthWrap extends StatelessWidget {
       stream: Authentication.onAuthStateChanged,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return snapshotInfo(child: const CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return snapshotInfo(child: const Text('Something went wrong'));
-        } else if (snapshot.hasData) {
+          return loadingInfo();
+        }
+
+        if (snapshot.hasError) {
+          Crashlytics.report(snapshot.error, reason: 'on_auth_state_changed_error');
+          return errorInfo();
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {}
+
+        if (snapshot.hasData) {
           return FutureBuilder(
             future: initUser(snapshot.data!.uid),
             builder: (_, AsyncSnapshot<void> snapshot) {
               if (snapshot.hasError) {
-                Crashlytics.report(snapshot.error, reason: 'on_auth_state_changed_error');
-                return snapshotInfo(child: txts('Error: No internet connection!'));
+                Crashlytics.report(snapshot.error, reason: 'init_user_error');
+                return noInternetInfo();
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return snapshotInfo(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Padding(
-                      padding: pad(rp: 10),
-                      child: txts('Loading...'),
-                    ),
-                  ],
-                );
+                return loadingInfo();
               }
               return page;
             },
           );
         }
+
         return const LoginPage();
       },
     );
