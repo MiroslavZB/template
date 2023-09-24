@@ -11,6 +11,8 @@ Widget fieldCard({
   Color? focusColor,
   BorderRadius? borderRadius,
   EdgeInsets? contentPadding,
+  Widget? suffixIcon,
+  int? maxLength,
 }) {
   id ??= hint;
   fields[id] ??= TextEditingController(text: initialValue);
@@ -19,6 +21,7 @@ Widget fieldCard({
     child: TextFormField(
       controller: fields[id]!,
       readOnly: readOnly,
+      maxLength: maxLength,
       maxLines: multiLineFields.contains(id) ? null : 1,
       keyboardType: numberFields.contains(id)
           ? TextInputType.number
@@ -29,6 +32,7 @@ Widget fieldCard({
                   : null,
       decoration: fieldDecoration(
         hint: hint,
+        suffixIcon: suffixIcon,
         contentPadding: contentPadding,
         focusColor: focusColor ?? accentColor,
         borderRadius: borderRadius ?? mediumBorderRadius,
