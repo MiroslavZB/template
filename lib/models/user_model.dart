@@ -30,6 +30,10 @@ class UserModel {
   // Private
   static const String _emptyId = '0';
 
+  // Getters
+  bool get isEmpty => id == _emptyId;
+  bool get isNotEmpty => id != _emptyId;
+
   @override
   String toString() => toFirestore().toString();
 }
