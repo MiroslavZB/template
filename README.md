@@ -88,7 +88,7 @@ This template features:
 b) Release:
    1. Navigate to the directory for they key and **generate the key** with:
       ```bash
-         keytool -genkeypair -v -keystore VVVVVV.jks -keyalg RSA -keysize 2048 -validity 10000 -alias VVVVVV -keypass VVVVVV -storepass VVVVVV
+      keytool -genkeypair -v -keystore VVVVVV.jks -keyalg RSA -keysize 2048 -validity 10000 -alias VVVVVV -keypass VVVVVV -storepass VVVVVV
       ```
    2. Get the SHA1 and SHA256 with:
    ```bash
