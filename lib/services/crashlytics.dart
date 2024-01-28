@@ -17,11 +17,11 @@ abstract class Crashlytics {
   static Future<void> setUserId(String id) async => await _instance.setUserIdentifier(id);
 
   static bool recordPlatformError(dynamic exception, StackTrace trace) {
-   // if (kDebugMode) {
+    if (kDebugMode) {
       log('exception $exception\ntrace: $trace');
-  //  } else {
+    } else {
       FirebaseCrashlytics.instance.recordError(exception, trace, fatal: true);
-  //  }
+    }
     return true;
   }
 
