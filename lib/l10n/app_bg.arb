@@ -1,0 +1,257 @@
+{
+  "all": "Всички",
+  "@all": {
+    "description": "Label showing unity of all foods"
+  },
+  "profile": "Профил",
+  "@profile": {
+    "description": "short text label for a page about the user's account where they can edit their profile"
+  },
+  "settings": "Настройки",
+  "@settings": {
+    "description": "text label about app settings and user settings"
+  },
+  "explore": "Опознай",
+  "@explore": {
+    "description": "short text label for a page where the user can explore the map for other users and local vendors"
+  },
+  "clear": "Изчистване",
+  "@clear": {
+    "description": "button label for removing the current user's picture and replacing it with the default one"
+  },
+  "enable": "Включи",
+  "@enable": {
+    "description": "short text label to enable notifications"
+  },
+  "delete": "Изтриване",
+  "@delete": {
+    "description": "label on a button that would delete the user's account"
+  },
+  "confirmation": "Потвърждение",
+  "@confirmation": {
+    "description": "title of a dialog showing that it is asking for a confirmation, affirmation of action"
+  },
+  "phone": "Телефон",
+  "@phone": {
+    "description": "text hint for the phone number of a user"
+  },
+  "address": "Адрес",
+  "@address": {
+    "description": "short text label about the address of the user"
+  },
+  "view": "Преглед",
+  "@view": {
+    "description": "text label describing the current view state of the shopping cart. Whether it is visible (shown) or invisible (hidden)"
+  },
+  "hide": "Скриване",
+  "@hide": {
+    "description": "label on a button with which the user can hide the appearance of their shopping cart making it invisible"
+  },
+  "show": "Покажи",
+  "@show": {
+    "description": "label on a button with which the user can reveal the appearance of their shopping cart making it visible"
+  },
+  "loading": "Зареждане",
+  "@loading": {
+    "description": "text label showing the status of a pending request marking it as loading"
+  },
+  "error": "Грешка",
+  "@error": {
+    "description": "text label informing the user about an ongoing error"
+  },
+  "errorNoInternet": "Грешка: Няма интернет връзка!",
+  "@errorNoInternet": {
+    "description": "error label informing the user that they currently don't have internet connection"
+  },
+  "somethingWentWrong": "Възникна грешка",
+  "@somethingWentWrong": {
+    "description": "error label informing the user that something unexpected went wrong"
+  },
+  "cancel": "Отказ",
+  "@cancel": {
+    "description": "Label on a button with which you cancel your last action"
+  },
+  "confirm": "Потвърди",
+  "@confirm": {
+    "description": "label on a button with which you confirm your last action"
+  },
+  "name": "Име",
+  "@name": {
+    "description": "hint text on a text field about the user's personal name or full name"
+  },
+  "email": "Имейл",
+  "@email": {
+    "description": "hint on a text field which would be about the user's email address"
+  },
+  "password": "Парола",
+  "@password": {
+    "description": "hint on a text field which would be about the user's password"
+  },
+  "allFieldsAreRequired": "Всички полета са задължителни!",
+  "@allFieldsAreRequired": {
+    "description": "text label in a dialog informing the user that all text fields are required and they can't skip any"
+  },
+  "forgotPassword": "Забравена парола",
+  "@forgotPassword": {
+    "description": "button label which would show the user how to get their password if they have forgotten it"
+  },
+  "deleteAccount": "Изтриване на профила",
+  "@deleteAccount": {
+    "description": "button label to delete the user's account"
+  },
+  "areYouSureYouWantToDelete": "Сигурни ли сте, че искате да изтриете своя акаунт?",
+  "@areYouSureYouWantToDelete": {
+    "description": "question asking the user if they are sure of their action to delete their account"
+  },
+  "exit": "Изход",
+  "@exit": {
+    "description": "label on a button for logging out and exiting the app"
+  },
+  "areYouSureYouWantToLogOut": "Сигурни ли сте, че искате да излезете от профила си?",
+  "@areYouSureYouWantToLogOut": {
+    "description": "question asking the user if they are sure of their action to log out of their account"
+  },
+  "signOut": "Отписване",
+  "@signOut": {
+    "description": "button label to sign out of the users account"
+  },
+  "anonymous": "Анонимен",
+  "@anonymous": {
+    "description": "Label for a user that doesn't have a name and is therefore anonymous"
+  },
+  "signInWithEmail": "Влезте с Имейл",
+  "@signInWithEmail": {
+    "description": "label on a button about signing in with email"
+  },
+  "signInWithGoogle": "Влизане с Google",
+  "@signInWithGoogle": {
+    "description": "label on a button about signing in with Google"
+  },
+  "signInWithApple": "Вход с Apple",
+  "@signInWithApple": {
+    "description": "label on a button about signing in with Apple"
+  },
+  "continueAsGuest": "Продължи като Гост",
+  "@continueAsGuest": {
+    "description": "label on a button about signing in as a Guest"
+  },
+  "continueString": "Продължи",
+  "@continueString": {
+    "description": "text label on a button that will continue the authentication process"
+  },
+  "authError": "Грешка при удостоверяването на самоличността",
+  "@authError": {
+    "description": "text label informing the user that there was an error with authentication to their account"
+  },
+  "anUnexpectedError": "Възникна непредвидена грешка. Моля, опитайте отново по-късно.",
+  "@anUnexpectedError": {
+    "description": "text label informing the user that an unexpected error has occurred"
+  },
+  "invalidEmail": "Невалиден имейл!",
+  "@invalidEmail": {
+    "description": "text label under text field informing the user that the email they inputted is invalid"
+  },
+  "passwordIsTooShort": "Паролата е твърде къса",
+  "@passwordIsTooShort": {
+    "description": "text label under text field informing the user that the password is too short"
+  },
+  "passwordIsTooLong": "Паролата е твърде дълга",
+  "@passwordIsTooLong": {
+    "description": "text label under text field informing the user that the password is too long"
+  },
+  "passwordMustContainALetter": "Паролата трябва да съдържа буква",
+  "@passwordMustContainALetter": {
+    "description": "text label under text field informing the user that the password must include a letter"
+  },
+  "passwordMustContainANumber": "Паролата трябва да съдържа число",
+  "@passwordMustContainANumber": {
+    "description": "text label under text field informing the user that the  password must include a number"
+  },
+  "wrongPassword": "Грешна парола!",
+  "@wrongPassword": {
+    "description": "text label informing the user that the password that they inputted is wrong"
+  },
+  "weakPassword": "Слаба парола!",
+  "@weakPassword": {
+    "description": "text label informing the user that the password that they inputted is weak and they can't use it"
+  },
+  "userNotFound": "Не е намерен потребител с този имейл и парола!",
+  "@userNotFound": {
+    "description": "text label informing the user that a user with this email and password hasn't been found"
+  },
+  "accountDisabled": "Акаунтът е деактивиран!",
+  "@accountDisabled": {
+    "description": "text label informing the user that their account has been disabled"
+  },
+  "accountWithThisEmailDoesntExist": "Акаунт с този имейл не съществува.\nАко продължите, ще бъде създаден акаунт със следния имейл: \"{email}\".",
+  "@accountWithThisEmailDoesntExist": {
+    "description": "text label informing the user what will happen if they continue",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "anEmailWithStepsToReset": "Изпратен е имейл с инструкции за нулиране на вашата парола до \"{email}\"",
+  "@anEmailWithStepsToReset": {
+    "description": "text label informing the user that they have received an email with instructions on how to reset their password",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "anEmailWithStepsToConfirmYourAddress": "Имейл със стъпки за потвърджение бяха изпратени на {email}",
+  "@anEmailWithStepsToConfirmYourAddress": {
+    "description": "text label when a user is trying to make a request to another user but this user can't send requests to the other use.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "emailNotVerified": "Имейлът Ви не е потвърден",
+  "@emailNotVerified": {
+    "description": "short text label informing the user that they can't send messages because their email isn't verified"
+  },
+  "emailIsVerified": "Имейлът Ви е потвърден. Благодаря!",
+  "@emailIsVerified": {
+    "description": "short text tooltip informing the user that they have successfully verified their email and we are thankful for that"
+  },
+  "somethingIsWrong": "Нещо не е наред?",
+  "@somethingIsWrong": {
+    "description": "text label asking the user if he finds something wrong with another user or the images they have received from another user"
+  },
+  "areYouSureYouWantToRemove": "Сигурни ли сте, че желаете да премахнете снимката си?",
+  "@areYouSureYouWantToRemove": {
+    "description": "text label asking the user for confirmation of their intention to remove their profile picture from their user profile"
+  },
+  "allowNotifications": "Разрешаване на известията",
+  "@allowNotifications": {
+    "description": "Label above a button with which you can enable and disable notifications"
+  },
+  "doYouWantToEnableNotifications": "Искате ли да разрешите известия?",
+  "@doYouWantToEnableNotifications": {
+    "description": "text label asking the user if they want to enable notifications"
+  },
+  "block": "Блокиране",
+  "@block": {
+    "description": "button label, which on pressed blocks another user from communicating with the current user"
+  },
+  "unblock": "Отблокиране",
+  "@unblock": {
+    "description": "button label, which on pressed removes the block on another user from communicating with the current user"
+  },
+  "report": "Докладвайте",
+  "@report": {
+    "description": "text label for reporting a user, an image, a text message and such so that it can be reviewed and deleted"
+  },
+  "reportSentSuccessfully": "Докладът беше изпратен успешно!",
+  "@reportSentSuccessfully": {
+    "description": "text label informing the user that they have successfully reported another user for misconduct"
+  },
+  "thisUserWasAlreadyReportedByYou": "Този потребител вече е докладван от вас и не можете да го докладвате повторно!",
+  "@thisUserWasAlreadyReportedByYou": {
+    "description": "text label informing the user that they have successfully reported another user for misconduct"
+  }
+}

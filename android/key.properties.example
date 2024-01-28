@@ -1,0 +1,4 @@
+storePassword=ABCDEF
+keyPassword=ABCDEF
+keyAlias=ABCDEF
+storeFile=/<PATH-TO-KEYSTORE>/ABCDEF.jks

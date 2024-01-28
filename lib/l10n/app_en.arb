@@ -1,0 +1,257 @@
+{
+  "all": "All",
+  "@all": {
+    "description": "Label showing unity of all foods"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "short text label for a page about the user's account where they can edit their profile"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "text label about app settings and user settings"
+  },
+  "explore": "Explore",
+  "@explore": {
+    "description": "short text label for a page where the user can explore the map for other users and local vendors"
+  },
+  "clear": "Clear",
+  "@clear": {
+    "description": "button label for removing the current user's picture and replacing it with the default one"
+  },
+  "enable": "Enable",
+  "@enable": {
+    "description": "short text label to enable notifications"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "short label on a button that would delete the user's account"
+  },
+  "confirmation": "Confirmation",
+  "@confirmation": {
+    "description": "title of a dialog showing that it is asking for a confirmation, affirmation of action"
+  },
+  "phone": "Phone",
+  "@phone": {
+    "description": "text hint for the phone number of a user"
+  },
+  "address": "Address",
+  "@address": {
+    "description": "short text label about the address of the user"
+  },
+  "view": "View",
+  "@view": {
+    "description": "short text label describing the current view state of the shopping cart. Whether it is visible (shown) or invisible (hidden)"
+  },
+  "hide": "Hide",
+  "@hide": {
+    "description": "short label on a button with which the user can hide the appearance of their shopping cart making it invisible"
+  },
+  "show": "Show",
+  "@show": {
+    "description": "short label on a button with which the user can reveal the appearance of their shopping cart making it visible"
+  },
+  "loading": "Loading",
+  "@loading": {
+    "description": "text label showing the status of a pending request marking it as loading"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "short text label informing the user about an ongoing error"
+  },
+  "errorNoInternet": "Error: No internet connection!",
+  "@errorNoInternet": {
+    "description": "error label informing the user that they currently don't have internet connection"
+  },
+  "somethingWentWrong": "Something went wrong",
+  "@somethingWentWrong": {
+    "description": "error label informing the user that something unexpected went wrong"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "short Label on a button with which you cancel your last action"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "short label on a button with which you confirm your last action"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "hint text on a text field about the user's personal name or full name"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "hint on a text field which would be about the user's email address"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "hint on a text field which would be about the user's password"
+  },
+  "allFieldsAreRequired": "All fields are required!",
+  "@allFieldsAreRequired": {
+    "description": "text label in a dialog informing the user that all text fields are required and they can't skip any"
+  },
+  "forgotPassword": "Forgot password",
+  "@forgotPassword": {
+    "description": "button label which would show the user how to get their password if they have forgotten it"
+  },
+  "deleteAccount": "Delete account",
+  "@deleteAccount": {
+    "description": "button label to delete the user's account"
+  },
+  "areYouSureYouWantToDelete": "Are you sure you want to delete your account?",
+  "@areYouSureYouWantToDelete": {
+    "description": "question asking the user if they are sure of their action to delete their account"
+  },
+  "exit": "Exit",
+  "@exit": {
+    "description": "short label on a button for logging out and exiting the app"
+  },
+  "areYouSureYouWantToLogOut": "Are you sure you want to log out?",
+  "@areYouSureYouWantToLogOut": {
+    "description": "question asking the user if they are sure of their action to log out of their account"
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "button label to sign out of the users account"
+  },
+  "anonymous": "Anonymous",
+  "@anonymous": {
+    "description": "Label for a user that doesn't have a name and is therefore anonymous"
+  },
+  "signInWithEmail": "Sign in with Email",
+  "@signInWithEmail": {
+    "description": "label on a button about signing in with email"
+  },
+  "signInWithGoogle": "Sign in with Google",
+  "@signInWithGoogle": {
+    "description": "label on a button about signing in with Google"
+  },
+  "signInWithApple": "Sign in with Apple",
+  "@signInWithApple": {
+    "description": "label on a button about signing in with Apple"
+  },
+  "continueAsGuest": "Continue as Guest",
+  "@continueAsGuest": {
+    "description": "label on a button about signing in as a Guest"
+  },
+  "continueString": "Continue",
+  "@continueString": {
+    "description": "text label on a button that will continue the authentication process"
+  },
+  "authError": "Authentication Error",
+  "@authError": {
+    "description": "text label informing the user that there was an error with authentication to their account"
+  },
+  "anUnexpectedError": "An unexpected error occurred. Please, try again later.",
+  "@anUnexpectedError": {
+    "description": "text label informing the user that an unexpected error has occurred"
+  },
+  "invalidEmail": "Invalid email!",
+  "@invalidEmail": {
+    "description": "text label under text field informing the user that the email they inputted is invalid"
+  },
+  "passwordIsTooShort": "Password is too short",
+  "@passwordIsTooShort": {
+    "description": "text label under text field informing the user that the password is too short"
+  },
+  "passwordIsTooLong": "Password is too long",
+  "@passwordIsTooLong": {
+    "description": "text label under text field informing the user that the password is too long"
+  },
+  "passwordMustContainALetter": "Password must contain a letter",
+  "@passwordMustContainALetter": {
+    "description": "text label under text field informing the user that the password must include a letter"
+  },
+  "passwordMustContainANumber": "Password must contain a number",
+  "@passwordMustContainANumber": {
+    "description": "text label under text field informing the user that the  password must include a number"
+  },
+  "wrongPassword": "Wrong password!",
+  "@wrongPassword": {
+    "description": "text label informing the user that the password that they inputted is wrong"
+  },
+  "weakPassword": "Weak password!",
+  "@weakPassword": {
+    "description": "text label informing the user that the password that they inputted is weak and they can't use it"
+  },
+  "userNotFound": "User not found with this email and password!",
+  "@userNotFound": {
+    "description": "text label informing the user that a user with this email and password hasn't been found"
+  },
+  "accountDisabled": "Account disabled!",
+  "@accountDisabled": {
+    "description": "text label informing the user that their account has been disabled"
+  },
+  "accountWithThisEmailDoesntExist": "Account with this email doesn't exist.\nIf you continue, an account with \"{email}\" will be created.",
+  "@accountWithThisEmailDoesntExist": {
+    "description": "text label informing the user what will happen if they continue",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "anEmailWithStepsToReset": "An email with steps to reset your password has been sent to \"{email}\"",
+  "@anEmailWithStepsToReset": {
+    "description": "text label informing the user that they have received an email with instructions on how to reset their password",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "anEmailWithStepsToConfirmYourAddress": "An email with steps to verify your email address has been sent to {email}",
+  "@anEmailWithStepsToConfirmYourAddress": {
+    "description": "text label when a user is trying to make a request to another user but this user can't send requests to the other use.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "emailNotVerified": "Email is not verified",
+  "@emailNotVerified": {
+    "description": "short text label informing the user that they can't send messages because their email isn't verified"
+  },
+  "emailIsVerified": "Email is verified. Thank you!",
+  "@emailIsVerified": {
+    "description": "short text tooltip informing the user that they have successfully verified their email and we are thankful for that"
+  },
+  "somethingIsWrong": "Something is wrong?",
+  "@somethingIsWrong": {
+    "description": "text label asking the user if he finds something wrong with another user or the images they have received from another user"
+  },
+  "areYouSureYouWantToRemove": "Are you sure you want to remove your photo?",
+  "@areYouSureYouWantToRemove": {
+    "description": "text label asking the user for confirmation of their intention to remove their profile picture from their user profile"
+  },
+  "allowNotifications": "Allow notifications",
+  "@allowNotifications": {
+    "description": "Label above a button with which you can enable and disable notifications"
+  },
+  "doYouWantToEnableNotifications": "Do you want to enable notifications?",
+  "@doYouWantToEnableNotifications": {
+    "description": "text label asking the user if they want to enable notifications"
+  },
+  "block": "Block",
+  "@block": {
+    "description": "button label, which on pressed blocks another user from communicating with the current user"
+  },
+  "unblock": "Unlock",
+  "@unblock": {
+    "description": "button label, which on pressed removes the block on another user from communicating with the current user"
+  },
+  "report": "Report",
+  "@report": {
+    "description": "text label for reporting a user, an image, a text message and such so that it can be reviewed and deleted"
+  },
+  "reportSentSuccessfully": "Report was sent successfully!",
+  "@reportSentSuccessfully": {
+    "description": "text label informing the user that they have successfully reported another user for misconduct"
+  },
+  "thisUserWasAlreadyReportedByYou": "This user was already reported by you and you can't report them again!",
+  "@thisUserWasAlreadyReportedByYou": {
+    "description": "text label informing the user that they have successfully reported another user for misconduct"
+  }
+}

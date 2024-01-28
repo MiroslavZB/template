@@ -1,0 +1,58 @@
+name: template # // TODO change back to your original name
+description: A template for a new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State
+  get: ^4.6.5
+
+  # For storing IDs in Firestore
+  uuid: ^3.0.7
+
+  # Authentication
+  google_sign_in: ^6.1.6
+  sign_in_with_apple: ^5.0.0
+
+  # Firebase
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.6.3
+  cloud_firestore: ^4.3.1
+  firebase_database: ^10.0.9
+  firebase_crashlytics: ^3.3.5
+
+  # Misc
+  url_launcher: ^6.2.4
+  google_fonts: ^6.1.0
+  cupertino_icons: ^1.0.2
+  cached_network_image: ^3.2.3
+
+  # Localizations
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.7
+
+flutter:
+  generate: true # for localizations
+  uses-material-design: true
+
+  assets:
+    - google_fonts/ # // TODO: also add the font files to your folder
+    - assets/
+    - assets/icons/
+    - assets/images/
+
+flutter_gen:
+  output: lib/utils/
