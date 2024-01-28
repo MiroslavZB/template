@@ -8,7 +8,8 @@ import 'package:template/utils/dialogs/get_dialog.dart';
 
 enum ThirdPartySignIn {
   google,
-  apple;
+  apple,
+  facebook;
 }
 
 class Authentication {
@@ -19,7 +20,18 @@ class Authentication {
   // Getters
   static FirebaseAuth get auth => _auth;
   static User? get user => _auth.currentUser;
+  static bool hasUser = user != null;
   static Stream<User?> get onAuthStateChanged => _auth.authStateChanges();
+
+  static dynamic get provider {
+    final String? providerId = Authentication.user?.providerData.firstOrNull?.providerId;
+    if (providerId == null) return 'none';
+    if (providerId.contains('google')) return ThirdPartySignIn.google;
+    if (providerId.contains('apple')) return ThirdPartySignIn.apple;
+    if (providerId.contains('facebook')) return ThirdPartySignIn.facebook;
+    if (providerId.contains('password')) return 'email';
+    return 'none';
+  }
 
   static Future<void> thirdPartySignIn(ThirdPartySignIn type) async {
     AuthCredential? credential;
@@ -41,9 +53,7 @@ class Authentication {
       } catch (e, s) {
         Crashlytics.report(e, trace: s, reason: 'thirdPartySignIn - Google');
       }
-    }
-
-    if (type == ThirdPartySignIn.apple) {
+    } else if (type == ThirdPartySignIn.apple) {
       try {
         final appleCredential = await SignInWithApple.getAppleIDCredential(
           scopes: [AppleIDAuthorizationScopes.email],
@@ -58,6 +68,11 @@ class Authentication {
       } catch (e, s) {
         Crashlytics.report(e, trace: s, reason: 'thirdPartySignIn - Apple');
       }
+    } else {
+      return getDialog(
+        short: 'Authentication error',
+        middle: 'The provider ${type.name} is not supported yet!',
+      );
     }
 
     if (credential == null) return getDialog(short: get.authError, middle: get.anUnexpectedError);
