@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
             ExpandedButton(
               onTap: () => Get.to(() => const SignInWithEmailPage(), transition: Transition.fadeIn),
               iconData: Icons.email,
-              text: 'Sign in with Email',
+              text: get.signInWithEmail,
               border: Border.all(width: 2, color: t.primary),
             ),
             ExpandedButton(
@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
               color: Colors.white,
               onColor: Colors.black,
               iconData: Icons.g_mobiledata, // TODO: add your own google icon
-              text: 'Sign in with Google',
+              text: get.signInWithGoogle,
               border: Border.all(width: 2),
             ),
             if (Platform.isIOS)
@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                 color: Colors.black,
                 onColor: Colors.white,
                 iconData: Icons.apple,
-                text: 'Sign in with Apple',
+                text: get.signInWithApple,
                 border: Border.all(width: 2),
               ),
             InkWell(
