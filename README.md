@@ -77,7 +77,6 @@ This template features:
 6. T&C and Privacy policy widget
 7. Easy way to use Text Form Field
 8. Validators
-9. 
 
 ## Signing (Android)
 ) Debug:
