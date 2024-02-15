@@ -64,10 +64,6 @@ class UserController extends GetxController {
   Future<void> deleteUser() async {
     await Database.deleteAllUser(Authentication.user!.uid);
 
-    await Authentication.auth.currentUser!.delete();
-
-    await Authentication.auth.signOut();
-
-    Get.back();
+    await Authentication.deleteUser();
   }
 }
