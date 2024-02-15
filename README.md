@@ -25,6 +25,8 @@ This project is a template for a Flutter application.
    app name.
 8. Setup a Firebase project.
 9. Initialize Firebase.
+10. To generate the localizations, run `flutter gen-l10n --untranslated-messages-file=lib/l10n/untranslated_messages.json`
+
 
 ## Authentication
 # Apple (for iOS only devices) 
