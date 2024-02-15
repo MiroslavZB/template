@@ -1,11 +1,10 @@
-import 'dart:math';
-
 import 'package:template/index.dart';
 import 'package:template/modules/authentication/authentication.dart';
 import 'package:template/modules/user/models/private_user_model.dart';
 import 'package:template/modules/user/models/public_user_model.dart';
 import 'package:template/modules/user/user_controller.dart';
 import 'package:template/services/database.dart';
+import 'package:template/utils/dialogs/unexpected_error_dialog.dart';
 
 bool finished = false;
 Future<void> initUser() async {
@@ -14,7 +13,9 @@ Future<void> initUser() async {
     try {
       await _fetchAndSetUserFromDatabase();
     } catch (e, s) {
-      Crashlytics.report(e, trace: s, reason: 'initUser _fetchAndSetUserFromDatabase error');
+      Crashlytics.report(e, trace: s, reason: '_fetchAndSetUserFromDatabase');
+      await unexpectedErrorDialog();
+
       rethrow;
     }
   }

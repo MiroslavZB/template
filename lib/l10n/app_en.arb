@@ -141,60 +141,85 @@
   },
   "authError": "Authentication Error",
   "@authError": {
-    "description": "text label informing the user that there was an error with authentication to their account"
+    "description": "error message informing the user that there was an error with authentication to their account"
   },
   "anUnexpectedError": "An unexpected error occurred. Please, try again later.",
   "@anUnexpectedError": {
-    "description": "text label informing the user that an unexpected error has occurred"
+    "description": "error message informing the user that an unexpected error has occurred"
   },
   "invalidEmail": "Invalid email!",
   "@invalidEmail": {
-    "description": "text label under text field informing the user that the email they inputted is invalid"
+    "description": "error message under text field informing the user that the email they inputted is invalid"
   },
   "passwordIsTooShort": "Password is too short",
   "@passwordIsTooShort": {
-    "description": "text label under text field informing the user that the password is too short"
+    "description": "error message under text field informing the user that the password is too short"
   },
   "passwordIsTooLong": "Password is too long",
   "@passwordIsTooLong": {
-    "description": "text label under text field informing the user that the password is too long"
+    "description": "error message under text field informing the user that the password is too long"
   },
   "passwordMustContainALetter": "Password must contain a letter",
   "@passwordMustContainALetter": {
-    "description": "text label under text field informing the user that the password must include a letter"
+    "description": "error message under text field informing the user that the password must include a letter"
   },
   "passwordMustContainANumber": "Password must contain a number",
   "@passwordMustContainANumber": {
-    "description": "text label under text field informing the user that the  password must include a number"
+    "description": "error message under text field informing the user that the  password must include a number"
   },
   "wrongPassword": "Wrong password!",
   "@wrongPassword": {
-    "description": "text label informing the user that the password that they inputted is wrong"
+    "description": "error message informing the user that the password that they inputted is wrong"
   },
   "weakPassword": "Weak password!",
   "@weakPassword": {
-    "description": "text label informing the user that the password that they inputted is weak and they can't use it"
+    "description": "error message informing the user that the password that they inputted is weak and they can't use it"
   },
   "userNotFound": "User not found with this email and password!",
   "@userNotFound": {
-    "description": "text label informing the user that a user with this email and password hasn't been found"
+    "description": "error message informing the user that a user with this email and password hasn't been found"
   },
   "accountDisabled": "Account disabled!",
   "@accountDisabled": {
-    "description": "text label informing the user that their account has been disabled"
+    "description": "error message informing the user that their account has been disabled"
+  },
+  "accountWithThisEmailAlreadyExists": "Account with this email already exists!",
+  "@accountWithThisEmailAlreadyExists": {
+    "description": "error message informing the user that they can't create an account with this email because it is taken"
+  },
+  "accountWithThisEmailExistsWithADifferentProvider": "An account with this email already exists with a different provider. Please, try a different sign-in method.",
+  "@accountWithThisEmailExistsWithADifferentProvider": {
+    "description": "error message informing the user that they can't use this email to create an account because it is already being used by another authentication provider"
+  },
+  "accountWithThisEmailIsAlreadyRegisteredWithADifferentProvider": "Account with this email is already registered with a different provider.' Please use your {authProvider} account to sign in.",
+  "@accountWithThisEmailIsAlreadyRegisteredWithADifferentProvider": {
+    "description": "error message informing the user that they can't use this email to create an account because it is already being used by another authentication provider",
+    "placeholders": {
+      "authProvider": {
+        "type": "String"
+      }
+    }
+  },
+  "invalidCredentials": "Invalid credentials!",
+  "@invalidCredentials": {
+    "description": "error message when authentication credentials are invalid don't match an existing account"
   },
   "accountWithThisEmailDoesntExist": "Account with this email doesn't exist.\nIf you continue, an account with \"{email}\" will be created.",
   "@accountWithThisEmailDoesntExist": {
-    "description": "text label informing the user what will happen if they continue",
+    "description": "error message informing the user what will happen if they continue",
     "placeholders": {
       "email": {
         "type": "String"
       }
     }
   },
+  "thisOperationIsSensitiveAndRequiresRecentLogin": "This operation is sensitive and requires recent authentication. Log in again before retrying this request.",
+  "@thisOperationIsSensitiveAndRequiresRecentLogin": {
+    "description": "error message when the user is trying to delete their account but that would require a recent login"
+  },
   "anEmailWithStepsToReset": "An email with steps to reset your password has been sent to \"{email}\"",
   "@anEmailWithStepsToReset": {
-    "description": "text label informing the user that they have received an email with instructions on how to reset their password",
+    "description": "error message informing the user that they have received an email with instructions on how to reset their password",
     "placeholders": {
       "email": {
         "type": "String"
@@ -203,7 +228,7 @@
   },
   "anEmailWithStepsToConfirmYourAddress": "An email with steps to verify your email address has been sent to {email}",
   "@anEmailWithStepsToConfirmYourAddress": {
-    "description": "text label when a user is trying to make a request to another user but this user can't send requests to the other use.",
+    "description": "error message when a user is trying to make a request to another user but this user can't send requests to the other use.",
     "placeholders": {
       "email": {
         "type": "String"
@@ -212,7 +237,7 @@
   },
   "emailNotVerified": "Email is not verified",
   "@emailNotVerified": {
-    "description": "short text label informing the user that they can't send messages because their email isn't verified"
+    "description": "short error message informing the user that they can't send messages because their email isn't verified"
   },
   "emailIsVerified": "Email is verified. Thank you!",
   "@emailIsVerified": {
@@ -220,7 +245,7 @@
   },
   "somethingIsWrong": "Something is wrong?",
   "@somethingIsWrong": {
-    "description": "text label asking the user if he finds something wrong with another user or the images they have received from another user"
+    "description": "error message asking the user if he finds something wrong with another user or the images they have received from another user"
   },
   "areYouSureYouWantToRemove": "Are you sure you want to remove your photo?",
   "@areYouSureYouWantToRemove": {

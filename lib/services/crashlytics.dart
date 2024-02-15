@@ -8,7 +8,7 @@ abstract class Crashlytics {
 
   static void report(dynamic exception, {StackTrace? trace, bool fatal = false, dynamic reason}) {
     if (kDebugMode) {
-      log('exception $exception\ntrance: $trace\nreason: $reason');
+      log('Crashlytics.report: $exception\ntrace: $trace\nreason: $reason');
     } else {
       _instance.recordError(exception, trace, fatal: fatal, reason: reason);
     }
@@ -18,7 +18,7 @@ abstract class Crashlytics {
 
   static bool recordPlatformError(dynamic exception, StackTrace trace) {
     if (kDebugMode) {
-      log('exception $exception\ntrace: $trace');
+      log('Crashlytics.recordPlatformError: $exception\ntrace: $trace');
     } else {
       FirebaseCrashlytics.instance.recordError(exception, trace, fatal: true);
     }

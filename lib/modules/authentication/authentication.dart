@@ -1,10 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:template/functions/go_to_home.dart';
 import 'package:template/functions/unfocus.dart';
 import 'package:template/index.dart';
+import 'package:template/modules/authentication/functions/error_handling.dart';
+import 'package:template/modules/user/user_controller.dart';
+import 'package:template/services/database.dart';
 import 'package:template/utils/dialogs/confirmation_dialog.dart';
 import 'package:template/utils/dialogs/get_dialog.dart';
+import 'package:template/utils/dialogs/unexpected_error_dialog.dart';
 
 enum ThirdPartySignIn {
   google,
@@ -19,9 +24,12 @@ class Authentication {
 
   // Getters
   static FirebaseAuth get auth => _auth;
-  static User? get user => _auth.currentUser;
-  static bool hasUser = user != null;
   static Stream<User?> get onAuthStateChanged => _auth.authStateChanges();
+
+  // User Getters
+  static User? get user => _auth.currentUser;
+  static bool get hasUser => user != null;
+  static String? get id => user?.uid;
 
   static dynamic get provider {
     final String? providerId = Authentication.user?.providerData.firstOrNull?.providerId;
@@ -33,184 +41,154 @@ class Authentication {
     return 'none';
   }
 
+  static const notFirebaseAuthException = 'NOT FirebaseAuthException';
+
   static Future<void> thirdPartySignIn(ThirdPartySignIn type) async {
     AuthCredential? credential;
 
-    if (type == ThirdPartySignIn.google) {
-      try {
-        final googleUser = await GoogleSignIn().signIn();
-
-        if (googleUser == null) return;
-
-        _lastEmail = googleUser.email;
-
-        final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-        credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
+    switch (type) {
+      case ThirdPartySignIn.google:
+        credential = await _tryGetGoogleCredential();
+        break;
+      case ThirdPartySignIn.apple:
+        credential = await _tryGetAppleCredential();
+        break;
+      default:
+        return getDialog(
+          short: get.authError,
+          middle: 'The provider ${type.name} is not supported yet!',
         );
-      } catch (e, s) {
-        Crashlytics.report(e, trace: s, reason: 'thirdPartySignIn - Google');
-      }
-    } else if (type == ThirdPartySignIn.apple) {
-      try {
-        final appleCredential = await SignInWithApple.getAppleIDCredential(
-          scopes: [AppleIDAuthorizationScopes.email],
-        );
-
-        _lastEmail = appleCredential.email;
-
-        credential = OAuthProvider('apple.com').credential(
-          accessToken: appleCredential.authorizationCode,
-          idToken: appleCredential.identityToken,
-        );
-      } catch (e, s) {
-        Crashlytics.report(e, trace: s, reason: 'thirdPartySignIn - Apple');
-      }
-    } else {
-      return getDialog(
-        short: 'Authentication error',
-        middle: 'The provider ${type.name} is not supported yet!',
-      );
     }
 
-    if (credential == null) return getDialog(short: get.authError, middle: get.anUnexpectedError);
+    if (credential == null) return unexpectedErrorDialog();
 
     try {
       await _auth.signInWithCredential(credential);
 
-      Get.until((route) => Get.currentRoute == '/');
+      goToHome();
     } on FirebaseAuthException catch (e, s) {
-      String? message;
-      switch (e.code) {
-        case 'account-exists-with-different-credential':
-          message = 'An account with this email already exists with a different provider.'
-              'Please, try a different sign-in method.';
-          {
-            if (_lastEmail == null) break;
-            final providers = await _auth.fetchSignInMethodsForEmail(_lastEmail!);
-            final authProvider = providers.firstOrNull;
-            if (authProvider == null) break;
-
-            message = 'An account with this email is already registered with a different provider.'
-                ' Please use your $authProvider account to sign in.';
-            break;
-          }
-        default:
-          break;
-      }
-      Crashlytics.report(e,
-          trace: s, reason: 'thirdPartySignIn FIREBASE error: type - ${type.name} -> error: $e \ncode: ${e.code}');
-
-      return getDialog(short: get.error, middle: message ?? get.anUnexpectedError);
+      await handleSignInWithCredential(e, s, _lastEmail);
     } catch (e, s) {
-      Crashlytics.report(e,
-          trace: s, reason: 'thirdPartySignIn NOT FIREBASE eror: type - ${type.name} -> error: $e');
-      return getDialog(short: get.error, middle: get.anUnexpectedError);
+      Crashlytics.report(e, trace: s, reason: 'thirdPartySignIn $notFirebaseAuthException}');
+      return unexpectedErrorDialog();
     }
   }
 
-  static void safeEmailSignIn(String email, String password) async {
+  static Future<void> safeEmailSignIn(String email, String password) async {
     try {
       unfocus();
       _lastEmail = email;
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      Get.until((route) => Get.currentRoute == '/');
-    } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'invalid-email':
-          return getDialog(short: get.error, middle: get.invalidEmail);
-        case 'user-disabled':
-          return getDialog(short: get.error, middle: get.accountDisabled);
-        case 'wrong-password':
-          return getDialog(short: get.error, middle: get.wrongPassword);
 
-        case 'INVALID_LOGIN_CREDENTIALS':
-        case 'user-not-found':
-          {
-            confirmationDialog(
-              middle: get.accountWithThisEmailDoesntExist(email),
-              onSuccess: () async {
-                _createEmailAccount(email: email, password: password).then((bool value) async {
-                  if (value) {
-                    await getDialog(
-                      short: get.confirmation,
-                      middle: get.anEmailWithStepsToConfirmYourAddress(email),
-                    );
-                    safeEmailSignIn(email, password);
-                  }
-                });
-              },
-            );
-            return;
-          }
-        default:
-          {
-            Crashlytics.report(e, reason: 'safeEmailSignIn error: $e, e.code: ${e.code}');
-            getDialog(short: get.error, middle: get.anUnexpectedError);
-            return;
-          }
-      }
+      goToHome();
+    } on FirebaseAuthException catch (e, s) {
+      await handleSignInWithEmailFirebaseAuthException(
+        e,
+        s,
+        () => confirmationDialog(
+          middle: get.accountWithThisEmailDoesntExist(email),
+          onSuccess: () => _createEmailAccount(email: email, password: password),
+        ),
+      );
     } catch (e, s) {
-      Crashlytics.report(e, trace: s, reason: 'safeEmailSignIn error NOT FirebaseAuthException');
+      Crashlytics.report(e, trace: s, reason: 'safeEmailSignIn $notFirebaseAuthException');
+      return unexpectedErrorDialog();
     }
   }
 
-  static Future<bool> _createEmailAccount({
+  static Future<void> _createEmailAccount({
     required String email,
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        getDialog(short: get.error, middle: get.weakPassword);
-      } else {
-        getDialog(short: get.error, middle: get.invalidEmail);
-      }
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      return false;
+      await getDialog(
+        short: get.confirmation,
+        middle: get.anEmailWithStepsToConfirmYourAddress(email),
+      );
+
+      await safeEmailSignIn(email, password);
+    } on FirebaseAuthException catch (e, s) {
+      await handleCreateUserWithEmailAndPasswordFirebaseAuthException(e, s);
     } catch (e, s) {
-      Crashlytics.report(e, trace: s, reason: '_createEmailAccount error NOT FirebaseAuthException');
-      return false;
+      Crashlytics.report(e, trace: s, reason: '_createEmailAccount $notFirebaseAuthException');
+      return unexpectedErrorDialog();
     }
-    return true;
   }
 
   static Future<void> resetPassword(String email) async {
     unfocus();
     try {
       await _auth.sendPasswordResetEmail(email: email);
+
       getDialog(
         short: get.confirmation,
         middle: get.anEmailWithStepsToReset(email),
       );
     } on FirebaseAuthException catch (e, s) {
-      switch (e.code) {
-        case 'invalid-email':
-          return getDialog(short: get.error, middle: get.invalidEmail);
-
-        case 'user-not-found':
-          return getDialog(short: get.error, middle: get.userNotFound);
-
-        case 'missing-android-pkg-name':
-        case 'missing-continue-uri':
-        case 'missing-ios-bundle-id':
-        case 'invalid-continue-uri':
-        case 'unauthorized-continue-uri':
-        default:
-          {
-            Crashlytics.report(e, trace: s, reason: 'resetPassword, e.code: ${e.code}');
-            getDialog(short: get.error, middle: get.anUnexpectedError);
-            return;
-          }
-      }
+      await handleSendPasswordResetEmailFirebaseAuthException(e, s);
     } catch (e, s) {
-      Crashlytics.report(e, trace: s, reason: 'resetPassword error NOT FirebaseAuthException');
-      return;
+      Crashlytics.report(e, trace: s, reason: 'resetPassword  $notFirebaseAuthException');
+      return unexpectedErrorDialog();
     }
   }
 
-  static Future<void> updateName(String? name) async => await user?.updateDisplayName(name);
+  static Future<void> updateName(String? name) async => user?.updateDisplayName(name);
+
+  static Future<void> deleteUser() async {
+    try {
+      final id = user!.uid;
+
+      await Authentication.user?.delete();
+
+      await Database.deleteAllUser(id);
+      Get.put(UserController()).clear();
+
+      goToHome();
+    } on FirebaseAuthException catch (e, s) {
+      await handleDeleteAccountFirebaseAuthException(e, s);
+    } catch (e, s) {
+      Crashlytics.report(e, trace: s, reason: 'deleteAllUser $notFirebaseAuthException');
+      return unexpectedErrorDialog();
+    }
+  }
+
+  static Future<AuthCredential?> _tryGetGoogleCredential() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+
+      if (googleUser == null) return null;
+
+      _lastEmail = googleUser.email;
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+      return GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    } catch (e, s) {
+      Crashlytics.report(e, trace: s, reason: '_tryGetGoogleCredential');
+    }
+    return null;
+  }
+
+  static Future<AuthCredential?> _tryGetAppleCredential() async {
+    try {
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [AppleIDAuthorizationScopes.email],
+      );
+
+      _lastEmail = appleCredential.email;
+
+      return OAuthProvider('apple.com').credential(
+        accessToken: appleCredential.authorizationCode,
+        idToken: appleCredential.identityToken,
+      );
+    } catch (e, s) {
+      Crashlytics.report(e, trace: s, reason: '_tryGetAppleCredential');
+    }
+    return null;
+  }
 }

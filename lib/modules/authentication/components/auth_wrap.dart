@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:template/components/snapshot_helpers.dart';
 import 'package:template/index.dart';
 import 'package:template/modules/authentication/authentication.dart';
-import 'package:template/modules/authentication/init_user.dart';
+import 'package:template/modules/authentication/functions/init_user.dart';
 import 'package:template/modules/authentication/pages/login_page.dart';
 
 bool hasSetUser = false;
@@ -26,7 +26,11 @@ class AuthWrap extends StatelessWidget {
         }
 
         if (snapshot.hasError) {
-          Crashlytics.report(snapshot.error, reason: 'on_auth_state_changed_error');
+          Crashlytics.report(
+            snapshot.error,
+            trace: snapshot.stackTrace,
+            reason: 'StreamBuilder -> stream: Authentication.onAuthStateChanged',
+          );
           return const ErrorInfo();
         }
 
@@ -35,7 +39,7 @@ class AuthWrap extends StatelessWidget {
             future: initUser(),
             builder: (_, AsyncSnapshot<void> snapshot) {
               if (snapshot.hasError) {
-                Crashlytics.report(snapshot.error, reason: 'init_user_error');
+                Crashlytics.report(snapshot.error, trace: snapshot.stackTrace, reason: 'initUser');
                 return const NoInternetInfo();
               }
 

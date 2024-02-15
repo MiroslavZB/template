@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 List<InlineSpan> highlightPattern(String text, String pattern) {
   if (text.isEmpty || pattern.isEmpty) {
-    log('error');
     return [];
   }
   final List<InlineSpan> textSpans = [];
