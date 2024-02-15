@@ -20,6 +20,7 @@ class CachedNetworkImageComplete extends StatelessWidget {
     this.height,
     this.squareSize,
     this.errorWidget,
+    // handles issues with loading of some images
     this.loadingWidget = const Center(child: CircularProgressIndicator(strokeWidth: 4)),
   });
 

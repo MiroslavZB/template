@@ -8,10 +8,9 @@ class TermsOfUseAndPrivacyPolicyTextsBuilder extends StatelessWidget {
   final String termsOfUseLink;
   final TextStyle? linkTextStyle;
   final TextStyle? textTextStyle;
-
-  /// Default alignment is center
   final TextAlign alignment;
 
+  /// Default alignment is center
   const TermsOfUseAndPrivacyPolicyTextsBuilder({
     super.key,
     required this.text,

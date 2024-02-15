@@ -54,24 +54,3 @@ Future<void> _fetchAndSetUserFromDatabase() async {
   // User exists and data isn't null
   await user.setUserFromFirestore(publicUserData: publicUserData, privateUserData: privateUserData);
 }
-
-String generateRandomString() {
-  final Random random = Random();
-  final StringBuffer buffer = StringBuffer();
-
-  for (int i = 0; i < 6; i++) {
-    final bool isNumber = random.nextBool();
-
-    if (isNumber) {
-      // Generate a random number (0-9)
-      buffer.write(random.nextInt(10));
-    } else {
-      // Generate a random uppercase letter (A-Z)
-      final int asciiOffset = 'A'.codeUnitAt(0);
-      final int randomLetter = asciiOffset + random.nextInt(26);
-      buffer.write(String.fromCharCode(randomLetter));
-    }
-  }
-
-  return '#$buffer';
-}

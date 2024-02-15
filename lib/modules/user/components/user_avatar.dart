@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:template/components/image_handler.dart';
+import 'package:template/components/cached_network_image_complete.dart';
 import 'package:template/functions/percent_screen.dart';
 import 'package:template/index.dart';
 import 'package:template/utils/extensions.dart';
