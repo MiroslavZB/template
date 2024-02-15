@@ -73,10 +73,8 @@ class _SignInWithEmailPageState extends State<SignInWithEmailPage> {
                 ExpandedButton(
                   onTap: () async {
                     if (!formKey.valid) return;
-                    if (formHasEmpty) {
-                      getDialog(short: 'Error', middle: 'All fields are required!');
-                      return;
-                    }
+                    if (formHasEmpty) return getDialog(short: get.error, middle: 'All fields are required!');
+
                     Authentication.safeEmailSignIn(emailController.text, passwordController.text);
                   },
                   text: get.continueString,

@@ -26,7 +26,7 @@ class LoadingInfo extends StatelessWidget {
         const CircularProgressIndicator(),
         Padding(
           padding: pad(tp: 10),
-          child: Txts('Loading...'),
+          child: Txts('${get.loading}...'),
         ),
       ],
     );

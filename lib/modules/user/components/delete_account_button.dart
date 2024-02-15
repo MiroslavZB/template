@@ -9,8 +9,8 @@ class DeleteAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () => confirmationDialog(
-        title: 'Confirmation',
-        middle: 'Are you sure you want to delete your account?',
+        title: get.confirmation,
+        middle: get.areYouSureYouWantToDelete,
         onSuccess: Get.put(UserController()).deleteUser,
       ),
       icon: Icon(

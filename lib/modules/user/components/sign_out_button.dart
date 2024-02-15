@@ -14,8 +14,8 @@ class SignOutButton extends StatelessWidget {
       transform: Matrix4.rotationY(pi),
       child: IconButton(
         onPressed: () => confirmationDialog(
-          title: 'Confirmation',
-          middle: 'Are you sure you want to log out?',
+          title: get.confirmation,
+          middle: get.areYouSureYouWantToLogOut,
           onSuccess: Get.put(UserController()).signOut,
         ),
         icon: const Icon(Icons.logout_outlined),

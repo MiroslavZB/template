@@ -18,14 +18,14 @@ Future<void> confirmationDialog({
               Expanded(
                 child: ElevatedButton(
                   onPressed: () => Get.back(),
-                  child: Txts('Cancel', col: t.primary),
+                  child: Txts(get.cancel, col: t.primary),
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: ElevatedButton(
                   onPressed: () => onSuccess().whenComplete(() => Get.back()),
-                  child: Txts('Confirm', col: t.primary),
+                  child: Txts(get.confirm, col: t.primary),
                 ),
               )
             ],
