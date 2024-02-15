@@ -41,8 +41,12 @@ class LoginPage extends StatelessWidget {
                 border: Border.all(width: 2),
               ),
             InkWell(
-              onTap: () => Authentication.auth.signInAnonymously(),
-              child: Txts('Continue as Guest', u: true),
+              borderRadius: circularBorderRadius,
+              onTap: Authentication.auth.signInAnonymously,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Txts(get.continueAsGuest, u: true),
+              ),
             ),
           ],
         ),
